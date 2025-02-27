@@ -57,3 +57,8 @@ def test_multiple_custom_delimiters():
     calc = StringCalculator()
     assert calc.add("//[*][%]\n1*2%3") == 6
     assert calc.add("//[###][%%%]\n4###5%%%6") == 15
+
+
+def test_trailing_delimiter():
+    calc = StringCalculator()
+    assert calc.add("1,2,\n") == 3  # Should handle gracefully
