@@ -16,3 +16,9 @@ def test_single_number_returns_same_number():
     calc = StringCalculator()
     assert calc.add("5") == 5
     assert calc.add("15") == 15
+
+
+def test_multiple_numbers():
+    calc = StringCalculator()
+    assert calc.add("1,2") == 3
+    assert calc.add("4,5,6") == 15
