@@ -51,3 +51,9 @@ def test_ignore_numbers_greater_than_1000():
 def test_multi_character_custom_delimiter():
     calc = StringCalculator()
     assert calc.add("//[***]\n1***2***3") == 6
+
+
+def test_multiple_custom_delimiters():
+    calc = StringCalculator()
+    assert calc.add("//[*][%]\n1*2%3") == 6
+    assert calc.add("//[###][%%%]\n4###5%%%6") == 15
