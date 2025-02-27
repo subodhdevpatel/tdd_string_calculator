@@ -16,7 +16,7 @@ class StringCalculator:
             )
             numbers = parts[1]
 
-        num_list = list(map(int, re.split(delimiter, numbers)))
+        num_list = [int(n) for n in re.split(delimiter, numbers) if n]
         negatives = [n for n in num_list if n < 0]
         if negatives:
             raise ValueError(f"Negatives not allowed: {negatives}")
