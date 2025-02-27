@@ -34,3 +34,9 @@ def test_custom_delimiter():
     calc = StringCalculator()
     assert calc.add("//;\n1;2") == 3
     assert calc.add("//|\n2|3|4") == 9
+
+
+def test_negative_numbers_throw_exception():
+    calc = StringCalculator()
+    with pytest.raises(ValueError, match="Negatives not allowed: .*"):
+        calc.add("1,-2,3")
