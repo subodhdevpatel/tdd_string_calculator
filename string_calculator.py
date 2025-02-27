@@ -8,7 +8,11 @@ class StringCalculator:
         delimiter = r"[,\n]"
         if numbers.startswith("//"):
             parts = numbers.split("\n", 1)
-            delimiter = re.escape(parts[0][2:])
+            delimiters = re.findall(r"\[(.*?)\]", parts[0])
+            if delimiters:
+                delimiter = "|".join(map(re.escape, delimiters))
+            else:
+                delimiter = re.escape(parts[0][2:])
             numbers = parts[1]
 
         num_list = list(map(int, re.split(delimiter, numbers)))
