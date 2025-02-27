@@ -5,16 +5,15 @@ class StringCalculator:
         if not numbers:
             return 0
 
-        delimiter = r"[\n,]"
+        delimiter = r"[,\n]"
         if numbers.startswith("//"):
             parts = numbers.split("\n", 1)
             delimiter = re.escape(parts[0][2:])
             numbers = parts[1]
 
-        numbers = re.split(delimiter, numbers)
-        negatives = [int(n) for n in numbers if int(n) < 0]
-
+        num_list = list(map(int, re.split(delimiter, numbers)))
+        negatives = [n for n in num_list if n < 0]
         if negatives:
             raise ValueError(f"Negatives not allowed: {negatives}")
 
-        return sum(int(n) for n in numbers if int(n) >= 0)
+        return sum(n for n in num_list if n <= 1000)
