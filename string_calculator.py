@@ -12,4 +12,9 @@ class StringCalculator:
             numbers = parts[1]
 
         numbers = re.split(delimiter, numbers)
-        return sum(int(n) for n in numbers)
+        negatives = [int(n) for n in numbers if int(n) < 0]
+
+        if negatives:
+            raise ValueError(f"Negatives not allowed: {negatives}")
+
+        return sum(int(n) for n in numbers if int(n) >= 0)
