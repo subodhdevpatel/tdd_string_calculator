@@ -28,3 +28,9 @@ def test_newline_as_delimiter():
     calc = StringCalculator()
     assert calc.add("1\n2,3") == 6
     assert calc.add("4\n5\n6") == 15
+
+
+def test_custom_delimiter():
+    calc = StringCalculator()
+    assert calc.add("//;\n1;2") == 3
+    assert calc.add("//|\n2|3|4") == 9
