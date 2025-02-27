@@ -40,3 +40,9 @@ def test_negative_numbers_throw_exception():
     calc = StringCalculator()
     with pytest.raises(ValueError, match="Negatives not allowed: .*"):
         calc.add("1,-2,3")
+
+
+def test_ignore_numbers_greater_than_1000():
+    calc = StringCalculator()
+    assert calc.add("2,1001") == 2
+    assert calc.add("1000,2") == 1002
